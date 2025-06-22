@@ -146,34 +146,32 @@
     <div class="card-page back" id="page2"></div>
   </div>
   <button class="flip-btn" onclick="nextPage()">Next Wish 🔁</button>
-  <div class="page-count" id="pageCounter">Page 1 / 20</div>
+  <div class="page-count" id="pageCounter">Page 1 / 18</div>
 </div>
 <script>
   let currentPage = 1;
-  const totalPages = 20;
+  const totalPages = 18;
   const card = document.getElementById('card');
   const cardContainer = document.getElementById('cardContainer');
   const pageCounter = document.getElementById('pageCounter');
   const pages = [
     { title: "🎂 Happy Birthday sehar!", text: "Wishing you joy, laughter, and endless blessings." },
     { title: "💖 Special Prayer", text: "May you always be surrounded by love and light." },
-    { title: "🌸 Dua-e-Khususi", text: "Khuda har mod par tumhara haami-o-nasir ho." },
-    { title: "🌟 Light of My Life", text: "Teri khushi meri zindagi ka maksad hai." },
-    { title: "🎁 Birthday Gift", text: "Meri har dua mein sirf tumhara zikr hai." },
+    { title: "🌸 Dua-e-Khususi", text: "Khuda har mod par apka haami-o-nasir ho." },
+    { title: "🌟 Light of My Life", text: "Allah apki Zindagi ko koshio sy bhar dye" },
+    { title: "🎁 Birthday Gift", text: "Meri har dua ap ky liye hai." },
     { title: "🕊️ Heartfelt Wish", text: "May all your dreams turn into reality." },
     { title: "🌈 Rainbow Moments", text: "Har din tumhare liye ek naye khwab ki tarah ho." },
-    { title: "💐 Flowers for You", text: "Tum phoolon se bhi zyada khubsurat ho." },
-    { title: "🎶 Musical Vibes", text: "Tumhari hansi ek naghme ki tarah hai jo dil ko chhoo jaati hai." },
     { title: "🍰 Sweet Like Cake", text: "Jaise cake me mithaas hoti hai, waise hi tum meri zindagi me ho." },
-    { title: "✨ Magical You", text: "Tum meri har dua ka sab se haseen jawab ho." },
-    { title: "💞 Heart to Heart", text: "Tumhari baatein dil ko choo jaati hain – bas yunhi muskurati raho." },
+    { title: "✨ Magical You", text: "Allah apki zindagi ko nagmo ki trah sada kr dye." },
+    { title: "💞 Heart to Heart", text: "Allah apk dil ko pak saf rakhy – bas yunhi muskurati raho." },
     { title: "📖 A New Chapter", text: "Zindagi ka ye naya saal tumhare liye khushiyan le kar aaye." },
-    { title: "🌠 Shining Star", text: "Sehar, tum meri zindagi ka roshan sitara ho." },
+    { title: "🌠 Shining Star", text: "Sehar, Ap zindagi ka roshan sitara ho." },
     { title: "🎇 Celebrate Today", text: "Aj ka din sirf tumhare naam – Happy Birthday again!" },
-    { title: "💎 My Precious", text: "Tum meri duniya ka sabse qeemti hissa ho." },
-    { title: "🕯️ Duaon ka Noor", text: "Roshan rahein ho tumhari zindagi ke har raaste par." },
+    { title: "💎 My Precious", text: "Ap duniya ka sabse qeemti hissa ho." },
+    { title: "🕯️ Duaon ka Noor", text: "Roshan rahein ho apki zindagi ke har raaste par." },
     { title: "💌 Dil se Dua", text: "Khuda tumhari har dua qubool kare. Ameen." },
-    { title: "🧚 Fairy Moments", text: "Tum ek pari ki tarah meri duniya mein aayi ho." },
+    { title: "🧚 Fairy Moments", text: "Ap ek pari ki tarah duniya mein aayi ho." },
     { title: "🎊 Final Wish", text: "Kabhi udaasi na aaye, tumhara chehra sada muskuraye!" }
   ];
   function openCard() {
