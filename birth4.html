@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Sehar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #ffe0f0, #fbeaff);
+      color: #4a4a4a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #d63384;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
+    p.subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .button {
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-bottom: 40px;
+      animation: bounce 1s infinite alternate;
+    }
+    .card-container {
+      display: none;
+      perspective: 1200px;
+      width: 90%;
+      max-width: 400px;
+      height: 260px;
+    }
+    .card {
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+    .card-page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background: #fff0f5;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease;
+    }
+    .card-page h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      color: #ff1493;
+      margin-bottom: 10px;
+    }
+    .card-page p {
+      font-size: 1rem;
+      text-align: center;
+    }
+    .card.flipped { transform: rotateY(180deg); }
+    .back { transform: rotateY(180deg); }
+    .flip-btn {
+      background-color: #d63384;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 25px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .page-count {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .balloons {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .balloon {
+      position: absolute;
+      width: 50px; height: 70px;
+      background: radial-gradient(circle, #ff8fcf, #ff3b8d);
+      border-radius: 50% 50% 45% 45%;
+      animation: float 8s linear infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-100vh); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+<audio autoplay loop>
+  <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Happy_Birthday_Instrumental/Kevin_MacLeod_-_Happy_Birthday.mp3" type="audio/mpeg">
+</audio>
+<div class="balloons">
+  <div class="balloon" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="balloon" style="left: 25%; animation-delay: 2s;"></div>
+  <div class="balloon" style="left: 40%; animation-delay: 4s;"></div>
+  <div class="balloon" style="left: 60%; animation-delay: 1s;"></div>
+  <div class="balloon" style="left: 75%; animation-delay: 3s;"></div>
+</div>
+<h1>Happy Birthday Sehr 🎉</h1>
+<p class="subtitle">🌸 Happy shappy birthday Dear Sehar 🌸</p>
+<button class="button" onclick="openCard()">Open Your Wishes 💌</button>
+<div class="card-container" id="cardContainer">
+  <div class="card" id="card">
+    <div class="card-page front" id="page1"></div>
+    <div class="card-page back" id="page2"></div>
+  </div>
+  <button class="flip-btn" onclick="nextPage()">Next Wish 🔁</button>
+  <div class="page-count" id="pageCounter">Page 1 / 20</div>
+</div>
+<script>
+  let currentPage = 1;
+  const totalPages = 20;
+  const card = document.getElementById('card');
+  const cardContainer = document.getElementById('cardContainer');
+  const pageCounter = document.getElementById('pageCounter');
+  const pages = [
+    { title: "🎂 Happy Birthday sehar!", text: "Wishing you joy, laughter, and endless blessings." },
+    { title: "💖 Special Prayer", text: "May you always be surrounded by love and light." },
+    { title: "🌸 Dua-e-Khususi", text: "Khuda har mod par tumhara haami-o-nasir ho." },
+    { title: "🌟 Light of My Life", text: "Teri khushi meri zindagi ka maksad hai." },
+    { title: "🎁 Birthday Gift", text: "Meri har dua mein sirf tumhara zikr hai." },
+    { title: "🕊️ Heartfelt Wish", text: "May all your dreams turn into reality." },
+    { title: "🌈 Rainbow Moments", text: "Har din tumhare liye ek naye khwab ki tarah ho." },
+    { title: "💐 Flowers for You", text: "Tum phoolon se bhi zyada khubsurat ho." },
+    { title: "🎶 Musical Vibes", text: "Tumhari hansi ek naghme ki tarah hai jo dil ko chhoo jaati hai." },
+    { title: "🍰 Sweet Like Cake", text: "Jaise cake me mithaas hoti hai, waise hi tum meri zindagi me ho." },
+    { title: "✨ Magical You", text: "Tum meri har dua ka sab se haseen jawab ho." },
+    { title: "💞 Heart to Heart", text: "Tumhari baatein dil ko choo jaati hain – bas yunhi muskurati raho." },
+    { title: "📖 A New Chapter", text: "Zindagi ka ye naya saal tumhare liye khushiyan le kar aaye." },
+    { title: "🌠 Shining Star", text: "Amna, tum meri zindagi ka roshan sitara ho." },
+    { title: "🎇 Celebrate Today", text: "Aj ka din sirf tumhare naam – Happy Birthday again!" },
+    { title: "💎 My Precious", text: "Tum meri duniya ka sabse qeemti hissa ho." },
+    { title: "🕯️ Duaon ka Noor", text: "Roshan rahein ho tumhari zindagi ke har raaste par." },
+    { title: "💌 Dil se Dua", text: "Khuda tumhari har dua qubool kare. Ameen." },
+    { title: "🧚 Fairy Moments", text: "Tum ek pari ki tarah meri duniya mein aayi ho." },
+    { title: "🎊 Final Wish", text: "Kabhi udaasi na aaye, tumhara chehra sada muskuraye!" }
+  ];
+  function openCard() {
+    document.querySelector('.button').style.display = 'none';
+    cardContainer.style.display = 'block';
+    loadPage();
+  }
+  function nextPage() {
+    currentPage++;
+    if (currentPage > totalPages) currentPage = 1;
+    loadPage();
+  }
+  function loadPage() {
+    const isFlipped = currentPage % 2 === 0;
+    card.className = isFlipped ? 'card flipped' : 'card';
+    const front = document.getElementById('page1');
+    const back = document.getElementById('page2');
+    const content = pages[currentPage - 1];
+    const html = `<h2>${content.title}</h2><p>${content.text}</p>`;
+    if (!isFlipped) {
+      front.innerHTML = html;
+    } else {
+      back.innerHTML = html;
+    }
+    pageCounter.innerText = `Page ${currentPage} / ${totalPages}`;
+  }
+</script>
+</body>
+</html>
